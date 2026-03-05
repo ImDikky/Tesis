@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVIBVA - Panel de Control</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body data-theme="dark">
+
+    <aside class="sidebar">
+        <div class="brand-title">
+            SVIBVA 
+            <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">v1.0.0</span>
+        </div>
+
+        <div class="section-title">Dispositivos</div>
+        <ul class="device-list">
+            <li class="device-item">
+                <span class="status-dot online"></span>
+                <span>Entrada Principal</span>
+            </li>
+            <li class="device-item">
+                <span class="status-dot offline"></span>
+                <span>Patio Trasero</span>
+            </li>
+        </ul>
+
+        <div class="section-title">Controles PTZ</div>
+        <div class="ptz-controls">
+            <div class="ptz-grid">
+                <div></div><button class="ptz-btn">▲</button><div></div>
+                <button class="ptz-btn">◄</button><button class="ptz-btn">●</button><button class="ptz-btn">►</button>
+                <div></div><button class="ptz-btn">▼</button><div></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <button class="ptz-btn" style="flex: 1; margin-right: 5px;">Zoom -</button>
+                <button class="ptz-btn" style="flex: 1; margin-left: 5px;">Zoom +</button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="topbar">
+            <h2>Monitoreo en Vivo</h2>
+            <button class="btn-theme" id="themeToggle">Cambiar a Modo Claro</button>
+        </div>
+
+        <div class="camera-grid" id="cameraGrid">
+            
+            <div class="camera-card" onclick="toggleFocus(this)">
+                <div class="camera-header">
+                    <span>Entrada Principal</span>
+                    <span class="camera-stats">1080p | 30 FPS | RTSP</span>
+                </div>
+                <div class="camera-feed">
+                    <div class="bounding-box">
+                        <div class="box-label">Persona 85%</div>
+                    </div>
+                    [Señal de Video en Vivo]
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
