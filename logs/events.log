@@ -1643,3 +1643,185 @@
 2026-03-06 11:37:19,310 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Camara johancito'. Reintentando en 5s...
 2026-03-06 11:37:21,874 [INFO] SVIBVA: ⏸ Cámara 'Camara johancito' pausada — hardware liberado en hilo receptor.
 2026-03-06 11:37:21,875 [INFO] SVIBVA: ⏸ Cámara cam_1772811250697 → paused
+2026-03-06 11:43:40,223 [INFO] SVIBVA: Conectando a cámara 'Entrada Principal'...
+2026-03-06 11:43:40,224 [INFO] SVIBVA: Cámara 'Entrada Principal' iniciada — fuente: 0
+2026-03-06 11:43:44,242 [INFO] SVIBVA: ⚙ PyTorch limitado a 2 hilo(s) de inferencia.
+2026-03-06 11:43:44,242 [INFO] SVIBVA: Cargando modelo YOLO: yolov8n.pt ...
+2026-03-06 11:43:44,301 [INFO] SVIBVA: Modelo yolov8n.pt cargado exitosamente.
+2026-03-06 11:43:44,302 [INFO] SVIBVA: ℹ Bot de Telegram deshabilitado. Configura TELEGRAM_ENABLED=True en config.py para activarlo.
+2026-03-06 11:43:44,429 [INFO] SVIBVA: ============================================================
+2026-03-06 11:43:44,429 [INFO] SVIBVA:   SVIBVA v1.0 — Sistema de Videovigilancia Inteligente
+2026-03-06 11:43:44,429 [INFO] SVIBVA:   Desarrollado en IUTA — Caracas, Venezuela
+2026-03-06 11:43:44,430 [INFO] SVIBVA: ============================================================
+2026-03-06 11:43:44,430 [INFO] SVIBVA: 🚀 Servidor iniciado en http://0.0.0.0:5050
+2026-03-06 11:43:44,430 [INFO] SVIBVA: 📷 Cámaras activas: 1
+2026-03-06 11:43:45,939 [INFO] SVIBVA: 📡 Cliente WebSocket conectado. Total activos: 1
+2026-03-06 11:43:46,750 [INFO] SVIBVA: ✅ Cámara 'Entrada Principal' conectada.
+2026-03-06 11:43:51,652 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (76%) | Objetos: 2
+2026-03-06 11:43:52,091 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (78%) | Objetos: 2
+2026-03-06 11:43:52,549 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (80%) | Objetos: 2
+2026-03-06 11:43:52,990 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (76%) | Objetos: 2
+2026-03-06 11:43:53,436 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (80%) | Objetos: 2
+2026-03-06 11:43:53,852 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (68%) | Objetos: 2
+2026-03-06 11:43:54,330 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (93%), Persona (74%) | Objetos: 2
+2026-03-06 11:43:54,610 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (70%) | Objetos: 2
+2026-03-06 11:43:54,989 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (76%) | Objetos: 2
+2026-03-06 11:43:55,163 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (69%) | Objetos: 2
+2026-03-06 11:43:55,590 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (70%) | Objetos: 2
+2026-03-06 11:43:56,036 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (72%) | Objetos: 2
+2026-03-06 11:43:56,466 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (72%) | Objetos: 2
+2026-03-06 11:43:56,905 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (65%) | Objetos: 2
+2026-03-06 11:43:57,358 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (77%) | Objetos: 2
+2026-03-06 11:43:57,779 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:43:58,177 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:43:58,422 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:43:58,849 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:43:59,286 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:43:59,736 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:44:00,255 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:44:00,760 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%) | Objetos: 1
+2026-03-06 11:44:00,874 [INFO] SVIBVA: ⏸ Cámara 'Entrada Principal' pausada — hardware liberado en hilo receptor.
+2026-03-06 11:44:00,874 [INFO] SVIBVA: ⏸ Cámara cam_0 → paused
+2026-03-06 11:44:23,959 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:44:23,959 [INFO] SVIBVA: Cámara 'Onichan' iniciada — fuente: http://192.168.9.102:5050/
+2026-03-06 11:44:23,960 [INFO] SVIBVA: ➕ Cámara agregada vía API: Onichan (http://192.168.9.102:5050/)
+2026-03-06 11:44:41,075 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:44:46,076 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:45:02,153 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:45:07,155 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:45:23,297 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:45:28,299 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:45:44,136 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:45:49,137 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:46:03,675 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:46:08,676 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:46:24,594 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:46:29,596 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:46:43,921 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:46:48,922 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:47:03,895 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:47:08,895 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:47:23,764 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:47:28,765 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:47:43,383 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:47:48,384 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:48:03,289 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:48:06,702 [INFO] SVIBVA: ⏸ Cámara 'Onichan' pausada — hardware liberado en hilo receptor.
+2026-03-06 11:48:06,702 [INFO] SVIBVA: ⏸ Cámara cam_1772811863953 → paused
+2026-03-06 11:48:06,939 [INFO] SVIBVA: ▶ Cámara 'Onichan' reanudada.
+2026-03-06 11:48:06,939 [INFO] SVIBVA: ▶ Cámara cam_1772811863953 → resumed
+2026-03-06 11:48:07,122 [INFO] SVIBVA: ⏸ Cámara 'Onichan' pausada — hardware liberado en hilo receptor.
+2026-03-06 11:48:07,122 [INFO] SVIBVA: ⏸ Cámara cam_1772811863953 → paused
+2026-03-06 11:48:07,821 [INFO] SVIBVA: ▶ Cámara 'Onichan' reanudada.
+2026-03-06 11:48:07,822 [INFO] SVIBVA: ▶ Cámara cam_1772811863953 → resumed
+2026-03-06 11:48:08,290 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:48:23,866 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:48:28,866 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:48:44,389 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:48:49,390 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:49:04,738 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:49:09,739 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:49:24,930 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:49:29,930 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:49:45,229 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:49:50,230 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:50:05,193 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:50:10,194 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:50:25,516 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:50:30,516 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:50:44,484 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:50:49,485 [INFO] SVIBVA: Conectando a cámara 'Onichan'...
+2026-03-06 11:50:59,193 [INFO] SVIBVA: 🛑 Cámara 'Onichan' detenida — hardware liberado.
+2026-03-06 11:50:59,193 [INFO] SVIBVA: 🗑 Cámara eliminada y hardware liberado: cam_1772811863953
+2026-03-06 11:51:03,134 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'Onichan'. Reintentando en 5s...
+2026-03-06 11:51:05,978 [INFO] SVIBVA: Conectando a cámara 'onichan'...
+2026-03-06 11:51:05,979 [INFO] SVIBVA: Cámara 'onichan' iniciada — fuente: http://192.168.9.102:8080/video
+2026-03-06 11:51:05,979 [INFO] SVIBVA: ➕ Cámara agregada vía API: onichan (http://192.168.9.102:8080/video)
+2026-03-06 11:51:06,025 [INFO] SVIBVA: ✅ Cámara 'onichan' conectada.
+2026-03-06 11:51:26,744 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Automóvil (52%) | Objetos: 1
+2026-03-06 11:51:28,407 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (67%) | Objetos: 1
+2026-03-06 11:51:28,847 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (68%), Persona (64%) | Objetos: 2
+2026-03-06 11:51:30,199 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (55%) | Objetos: 1
+2026-03-06 11:51:30,670 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (51%) | Objetos: 1
+2026-03-06 11:51:31,059 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (63%) | Objetos: 1
+2026-03-06 11:51:31,395 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (54%) | Objetos: 1
+2026-03-06 11:51:31,829 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (53%) | Objetos: 1
+2026-03-06 11:51:33,607 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (52%) | Objetos: 1
+2026-03-06 11:51:35,679 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (51%) | Objetos: 1
+2026-03-06 11:51:36,116 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (50%) | Objetos: 1
+2026-03-06 11:51:36,968 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (51%) | Objetos: 1
+2026-03-06 11:51:38,124 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (63%) | Objetos: 1
+2026-03-06 11:51:39,000 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (54%), Persona (50%) | Objetos: 2
+2026-03-06 11:51:39,435 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (63%), Persona (53%) | Objetos: 2
+2026-03-06 11:51:39,870 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (56%) | Objetos: 1
+2026-03-06 11:51:40,140 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (67%), Persona (64%) | Objetos: 2
+2026-03-06 11:51:41,446 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (58%) | Objetos: 1
+2026-03-06 11:51:42,319 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (52%) | Objetos: 1
+2026-03-06 11:51:43,337 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (55%) | Objetos: 1
+2026-03-06 11:51:43,788 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (52%) | Objetos: 1
+2026-03-06 11:51:44,228 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (52%) | Objetos: 1
+2026-03-06 11:51:45,542 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (59%) | Objetos: 1
+2026-03-06 11:51:45,965 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (63%) | Objetos: 1
+2026-03-06 11:51:46,595 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (56%) | Objetos: 1
+2026-03-06 11:51:47,035 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (55%) | Objetos: 1
+2026-03-06 11:51:47,911 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (57%) | Objetos: 1
+2026-03-06 11:51:48,349 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (59%) | Objetos: 1
+2026-03-06 11:51:48,788 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (61%) | Objetos: 1
+2026-03-06 11:51:49,091 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (65%) | Objetos: 1
+2026-03-06 11:51:50,342 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (59%) | Objetos: 1
+2026-03-06 11:51:50,781 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (70%) | Objetos: 1
+2026-03-06 11:51:51,219 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (55%) | Objetos: 1
+2026-03-06 11:51:52,029 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (53%) | Objetos: 1
+2026-03-06 11:51:53,681 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (69%) | Objetos: 1
+2026-03-06 11:51:54,114 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (62%) | Objetos: 1
+2026-03-06 11:51:55,177 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (56%) | Objetos: 1
+2026-03-06 11:51:56,016 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (60%) | Objetos: 1
+2026-03-06 11:51:58,781 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (85%) | Objetos: 1
+2026-03-06 11:51:59,204 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:51:59,655 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (89%) | Objetos: 1
+2026-03-06 11:52:00,120 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (83%) | Objetos: 1
+2026-03-06 11:52:00,555 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (80%) | Objetos: 1
+2026-03-06 11:52:00,973 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (84%) | Objetos: 1
+2026-03-06 11:52:01,174 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (88%) | Objetos: 1
+2026-03-06 11:52:01,606 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (83%) | Objetos: 1
+2026-03-06 11:52:02,031 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:52:02,462 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:52:02,894 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (85%) | Objetos: 1
+2026-03-06 11:52:11,867 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (65%) | Objetos: 1
+2026-03-06 11:52:12,740 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (64%), Persona (60%) | Objetos: 2
+2026-03-06 11:52:17,446 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (52%) | Objetos: 1
+2026-03-06 11:52:17,876 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (72%) | Objetos: 1
+2026-03-06 11:52:18,314 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (73%) | Objetos: 1
+2026-03-06 11:52:24,390 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (68%), Persona (55%) | Objetos: 2
+2026-03-06 11:52:24,813 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (89%) | Objetos: 1
+2026-03-06 11:52:25,130 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (89%) | Objetos: 1
+2026-03-06 11:52:25,467 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (91%) | Objetos: 1
+2026-03-06 11:52:25,901 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (93%) | Objetos: 1
+2026-03-06 11:52:26,333 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (93%) | Objetos: 1
+2026-03-06 11:52:26,779 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (87%) | Objetos: 1
+2026-03-06 11:52:27,219 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (82%) | Objetos: 1
+2026-03-06 11:52:27,654 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (87%) | Objetos: 1
+2026-03-06 11:52:28,024 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (74%) | Objetos: 1
+2026-03-06 11:52:28,378 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:52:28,813 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (91%) | Objetos: 1
+2026-03-06 11:52:29,246 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (94%) | Objetos: 1
+2026-03-06 11:52:29,692 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (93%) | Objetos: 1
+2026-03-06 11:52:30,150 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:52:30,588 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (89%) | Objetos: 1
+2026-03-06 11:52:30,979 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (88%) | Objetos: 1
+2026-03-06 11:52:31,264 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (87%) | Objetos: 1
+2026-03-06 11:52:31,712 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (88%) | Objetos: 1
+2026-03-06 11:52:32,161 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (87%) | Objetos: 1
+2026-03-06 11:52:32,613 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:52:33,049 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (85%) | Objetos: 1
+2026-03-06 11:52:33,486 [INFO] SVIBVA: [DETECCIÓN] Cám: onichan | Persona (86%) | Objetos: 1
+2026-03-06 11:52:36,216 [INFO] SVIBVA: ⏸ Cámara 'onichan' pausada — hardware liberado en hilo receptor.
+2026-03-06 11:52:36,216 [INFO] SVIBVA: ⏸ Cámara cam_1772812265976 → paused
+2026-03-06 11:52:43,898 [INFO] SVIBVA: ▶ Cámara 'onichan' reanudada.
+2026-03-06 11:52:43,898 [INFO] SVIBVA: ▶ Cámara cam_1772812265976 → resumed
+2026-03-06 11:52:44,307 [INFO] SVIBVA: Conectando a cámara 'onichan'...
+2026-03-06 11:52:59,222 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'onichan'. Reintentando en 5s...
+2026-03-06 11:53:04,223 [INFO] SVIBVA: Conectando a cámara 'onichan'...
+2026-03-06 11:53:15,035 [INFO] SVIBVA: ⏸ Cámara 'onichan' pausada — hardware liberado en hilo receptor.
+2026-03-06 11:53:15,035 [INFO] SVIBVA: ⏸ Cámara cam_1772812265976 → paused
+2026-03-06 11:53:19,373 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'onichan'. Reintentando en 5s...

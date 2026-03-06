@@ -27,12 +27,12 @@ DEFAULT_CAMERAS = [
     #     "source": "rtsp://admin:password@192.168.1.10:554/stream1",
     #     "enabled": True,
     # },
-    # {
-    #     "id": "cam_2",
-    #     "name": "Garage",
-    #     "source": "http://192.168.1.20:8080/video",
-    #     "enabled": True,
-    # },
+    {
+        "id": "cam_2",
+        "name": "cell onichan",
+        "source": "http://192.168.9.102:8080/video",
+        "enabled": True,
+    },
 ]
 
 # ------------------------------------------------------------------------------
