@@ -1,0 +1,3 @@
+# Creado por SVIBVA para unificar el sistema en 'app'
+# Sin embargo el comando move_files.py falló por el terminal
+# Lo movemos manualmente

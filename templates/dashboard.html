@@ -1,70 +1,223 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVIBVA - Panel de Control</title>
-    
+    <title>SVIBVA — Panel de Videovigilancia</title>
+    <meta name="description" content="Sistema de Videovigilancia Inteligente Basado en Visión Artificial — IUTA Caracas">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
 </head>
-<body data-theme="dark">
 
-    <aside class="sidebar">
-        <div class="brand-title">
-            SVIBVA 
-            <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">v1.0.0</span>
+<body>
+
+<!-- ============================================================
+     SIDEBAR IZQUIERDO — Cámaras, Filtros, Estado del Bot, LAN
+     ============================================================ -->
+<aside class="sidebar" id="sidebar">
+
+    <!-- Marca / Logo -->
+    <div class="brand">
+        <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 10l4.553-2.069A1 1 0 0121 8.87V15.13a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+            </svg>
         </div>
+        <div class="brand-text">
+            <span class="brand-name">SVIBVA</span>
+            <span class="brand-version">v1.0 — Edge AI</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" title="Colapsar panel">‹</button>
+    </div>
 
-        <div class="section-title">Dispositivos</div>
-        <ul class="device-list">
-            <li class="device-item">
-                <span class="status-dot online"></span>
-                <span>Entrada Principal</span>
-            </li>
-            <li class="device-item">
-                <span class="status-dot offline"></span>
-                <span>Patio Trasero</span>
-            </li>
-        </ul>
-
-        <div class="section-title">Controles PTZ</div>
-        <div class="ptz-controls">
-            <div class="ptz-grid">
-                <div></div><button class="ptz-btn">▲</button><div></div>
-                <button class="ptz-btn">◄</button><button class="ptz-btn">●</button><button class="ptz-btn">►</button>
-                <div></div><button class="ptz-btn">▼</button><div></div>
+    <!-- Recursos del sistema -->
+    <div class="resource-bar-section">
+        <div class="resource-row">
+            <span class="resource-label">CPU</span>
+            <div class="resource-track">
+                <div class="resource-fill cpu-fill" id="cpuBar" style="width:0%"></div>
             </div>
-            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                <button class="ptz-btn" style="flex: 1; margin-right: 5px;">Zoom -</button>
-                <button class="ptz-btn" style="flex: 1; margin-left: 5px;">Zoom +</button>
+            <span class="resource-value" id="cpuVal">–%</span>
+        </div>
+        <div class="resource-row">
+            <span class="resource-label">RAM</span>
+            <div class="resource-track">
+                <div class="resource-fill ram-fill" id="ramBar" style="width:0%"></div>
+            </div>
+            <span class="resource-value" id="ramVal">–%</span>
+        </div>
+    </div>
+
+    <!-- Cámaras conectadas -->
+    <div class="section-header">
+        <span class="section-title">Cámaras</span>
+        <button class="btn-icon" id="btnAddCamera" title="Agregar cámara">+</button>
+    </div>
+    <ul class="camera-list" id="cameraList">
+        <!-- Poblado dinámicamente por JS -->
+    </ul>
+
+    <!-- Filtros de detección -->
+    <div class="section-header">
+        <span class="section-title">Filtros YOLO</span>
+    </div>
+    <div class="filter-chips" id="filterChips">
+        <label class="chip active" data-class="0">
+            <input type="checkbox" checked> 👤 Persona
+        </label>
+        <label class="chip active" data-class="2">
+            <input type="checkbox" checked> 🚗 Auto
+        </label>
+        <label class="chip" data-class="3">
+            <input type="checkbox"> 🏍 Moto
+        </label>
+        <label class="chip" data-class="15">
+            <input type="checkbox"> 🐱 Gato
+        </label>
+        <label class="chip" data-class="16">
+            <input type="checkbox"> 🐶 Perro
+        </label>
+    </div>
+
+    <!-- Estado del bot de Telegram -->
+    <div class="section-header">
+        <span class="section-title">Alertas Telegram</span>
+    </div>
+    <div class="telegram-status" id="telegramStatus">
+        <div class="status-indicator" id="telegramDot"></div>
+        <span id="telegramText">Verificando...</span>
+    </div>
+
+    <!-- Acceso LAN -->
+    <div class="section-header">
+        <span class="section-title">Acceso Red Local</span>
+    </div>
+    <div class="lan-info">
+        <div class="lan-url" id="lanUrl">–</div>
+        <div class="lan-hint">Accede desde cualquier dispositivo en tu red WiFi sin internet</div>
+    </div>
+
+    <!-- Tema -->
+    <div class="sidebar-footer">
+        <button class="btn-theme" id="themeToggle">
+            <span id="themeIcon">☀</span>
+            <span id="themeLabel">Modo Claro</span>
+        </button>
+    </div>
+
+</aside>
+
+
+<!-- ============================================================
+     ÁREA PRINCIPAL — Grid de cámaras + topbar
+     ============================================================ -->
+<main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <h1 class="topbar-title">Monitoreo en Vivo</h1>
+            <div class="topbar-badge" id="onlineBadge">
+                <span class="pulse-dot"></span>
+                <span id="onlineCount">0</span> en línea
             </div>
         </div>
-    </aside>
-
-    <main class="main-content">
-        <div class="topbar">
-            <h2>Monitoreo en Vivo</h2>
-            <button class="btn-theme" id="themeToggle">Cambiar a Modo Claro</button>
-        </div>
-
-        <div class="camera-grid" id="cameraGrid">
-            
-            <div class="camera-card" onclick="toggleFocus(this)">
-                <div class="camera-header">
-                    <span>Entrada Principal</span>
-                    <span class="camera-stats">1080p | 30 FPS | RTSP</span>
-                </div>
-                <div class="camera-feed">
-                    <div class="bounding-box">
-                        <div class="box-label">Persona 85%</div>
-                    </div>
-                    [Señal de Video en Vivo]
-                </div>
+        <div class="topbar-right">
+            <!-- Selector de layout -->
+            <div class="layout-selector">
+                <button class="layout-btn active" data-cols="1" title="1 cámara">▣</button>
+                <button class="layout-btn" data-cols="2" title="2x2">⊞</button>
+                <button class="layout-btn" data-cols="4" title="4 cámaras">⊟</button>
             </div>
-
         </div>
-    </main>
+    </header>
 
-    <script src="{{ url_for('static', path='js/main.js') }}"></script>
+    <!-- Grid de feeds de video -->
+    <div class="camera-grid" id="cameraGrid">
+        <!-- Poblado dinámicamente por JS al cargar -->
+        <div class="no-cameras-placeholder" id="noCamerasMsg">
+            <div class="placeholder-icon">📷</div>
+            <p>No hay cámaras configuradas.</p>
+            <p>Agrega una cámara con el botón <strong>+</strong> en el panel lateral.</p>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- ============================================================
+     PANEL DERECHO — Log de alertas en tiempo real
+     ============================================================ -->
+<aside class="alerts-panel" id="alertsPanel">
+
+    <div class="alerts-header">
+        <h3 class="alerts-title">Alertas en Vivo</h3>
+        <div class="alerts-controls">
+            <span class="alert-count-badge" id="alertCount">0</span>
+            <button class="btn-icon-sm" id="btnClearAlerts" title="Limpiar alertas">🗑</button>
+            <button class="btn-icon-sm" id="btnToggleAlerts" title="Colapsar">›</button>
+        </div>
+    </div>
+
+    <div class="ws-status" id="wsStatus">
+        <span class="ws-dot disconnected"></span>
+        <span id="wsStatusText">Conectando...</span>
+    </div>
+
+    <div class="alerts-list" id="alertsList">
+        <div class="alert-empty">Sin alertas recientes</div>
+    </div>
+
+</aside>
+
+<!-- ============================================================
+     BOTONES FLOTANTES PARA REABRIR PANELES
+     ============================================================ -->
+<button class="reopen-btn reopen-left" id="btnReopenSidebar" title="Expandir menú" style="display: none;">
+    ›
+</button>
+<button class="reopen-btn reopen-right" id="btnReopenAlerts" title="Expandir alertas" style="display: none;">
+    ‹
+</button>
+
+
+<!-- ============================================================
+     MODAL — Agregar cámara
+     ============================================================ -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Agregar Cámara</h3>
+            <button class="modal-close" id="modalClose">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Nombre de la cámara</label>
+                <input type="text" id="camName" placeholder="Ej: Entrada Principal" class="form-input">
+            </div>
+            <div class="form-group">
+                <label>Fuente de video</label>
+                <input type="text" id="camSource" placeholder="0 (USB), rtsp://... o http://..." class="form-input">
+                <span class="form-hint">
+                    USB: escribe <code>0</code> (primera cámara) o <code>1</code>, <code>2</code>…<br>
+                    RTSP: <code>rtsp://usuario:clave@192.168.1.10:554/stream</code><br>
+                    IP Webcam/DroidCam: <code>http://192.168.1.x:8080/video</code>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" id="btnModalCancel">Cancelar</button>
+            <button class="btn-primary" id="btnModalAdd">Agregar</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', path='js/main.js') }}"></script>
 </body>
 </html>
