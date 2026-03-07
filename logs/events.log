@@ -1825,3 +1825,99 @@
 2026-03-06 11:53:15,035 [INFO] SVIBVA: ⏸ Cámara 'onichan' pausada — hardware liberado en hilo receptor.
 2026-03-06 11:53:15,035 [INFO] SVIBVA: ⏸ Cámara cam_1772812265976 → paused
 2026-03-06 11:53:19,373 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'onichan'. Reintentando en 5s...
+2026-03-06 20:04:50,733 [INFO] SVIBVA: Conectando a cámara 'Entrada Principal'...
+2026-03-06 20:04:50,733 [INFO] SVIBVA: Cámara 'Entrada Principal' iniciada — fuente: 0
+2026-03-06 20:04:50,739 [INFO] SVIBVA: Conectando a cámara 'cell onichan'...
+2026-03-06 20:04:50,739 [INFO] SVIBVA: Cámara 'cell onichan' iniciada — fuente: http://192.168.9.102:8080/video
+2026-03-06 20:04:58,184 [INFO] SVIBVA: ✅ Cámara 'Entrada Principal' conectada.
+2026-03-06 20:05:02,623 [INFO] SVIBVA: ⚙ PyTorch limitado a 2 hilo(s) de inferencia.
+2026-03-06 20:05:02,624 [INFO] SVIBVA: Cargando modelo YOLO: yolov8n.pt ...
+2026-03-06 20:05:02,823 [INFO] SVIBVA: Modelo yolov8n.pt cargado exitosamente.
+2026-03-06 20:05:02,830 [INFO] SVIBVA: ℹ Bot de Telegram deshabilitado. Configura TELEGRAM_ENABLED=True en config.py para activarlo.
+2026-03-06 20:05:03,215 [INFO] SVIBVA: ============================================================
+2026-03-06 20:05:03,216 [INFO] SVIBVA:   SVIBVA v1.0 — Sistema de Videovigilancia Inteligente
+2026-03-06 20:05:03,216 [INFO] SVIBVA:   Desarrollado en IUTA — Caracas, Venezuela
+2026-03-06 20:05:03,217 [INFO] SVIBVA: ============================================================
+2026-03-06 20:05:03,217 [INFO] SVIBVA: 🚀 Servidor iniciado en http://0.0.0.0:5050
+2026-03-06 20:05:03,217 [INFO] SVIBVA: 📷 Cámaras activas: 2
+2026-03-06 20:05:07,115 [INFO] SVIBVA: 📡 Cliente WebSocket conectado. Total activos: 1
+2026-03-06 20:05:07,657 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (90%) | Objetos: 1
+2026-03-06 20:05:07,760 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (80%), Persona (65%) | Objetos: 2
+2026-03-06 20:05:08,080 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (84%) | Objetos: 1
+2026-03-06 20:05:08,508 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (79%) | Objetos: 1
+2026-03-06 20:05:08,924 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (81%) | Objetos: 1
+2026-03-06 20:05:09,344 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:05:09,767 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (73%) | Objetos: 1
+2026-03-06 20:05:10,183 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (76%) | Objetos: 1
+2026-03-06 20:05:10,825 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (75%) | Objetos: 1
+2026-03-06 20:05:11,235 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (70%) | Objetos: 1
+2026-03-06 20:05:11,653 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (72%) | Objetos: 1
+2026-03-06 20:05:12,089 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:05:12,506 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (61%) | Objetos: 1
+2026-03-06 20:05:12,923 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (63%) | Objetos: 1
+2026-03-06 20:05:13,340 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (57%) | Objetos: 1
+2026-03-06 20:05:13,552 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (57%) | Objetos: 1
+2026-03-06 20:05:13,939 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (66%) | Objetos: 1
+2026-03-06 20:05:14,354 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (62%) | Objetos: 1
+2026-03-06 20:05:14,779 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (54%) | Objetos: 1
+2026-03-06 20:05:15,624 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (59%) | Objetos: 1
+2026-03-06 20:05:16,740 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (50%) | Objetos: 1
+2026-03-06 20:05:19,340 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (50%) | Objetos: 1
+2026-03-06 20:05:19,620 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (61%) | Objetos: 1
+2026-03-06 20:05:20,062 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (54%) | Objetos: 1
+2026-03-06 20:05:20,914 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (53%) | Objetos: 1
+2026-03-06 20:05:21,346 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (52%) | Objetos: 1
+2026-03-06 20:05:21,792 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:05:26,146 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (62%) | Objetos: 1
+2026-03-06 20:05:27,005 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (61%) | Objetos: 1
+2026-03-06 20:05:27,425 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (60%) | Objetos: 1
+2026-03-06 20:05:27,845 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (57%) | Objetos: 1
+2026-03-06 20:05:28,503 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (53%) | Objetos: 1
+2026-03-06 20:05:28,922 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (62%), Persona (51%) | Objetos: 2
+2026-03-06 20:05:29,342 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (59%), Persona (56%) | Objetos: 2
+2026-03-06 20:05:31,380 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (51%) | Objetos: 1
+2026-03-06 20:05:32,169 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (53%) | Objetos: 1
+2026-03-06 20:05:32,590 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (62%) | Objetos: 1
+2026-03-06 20:05:33,008 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (57%) | Objetos: 1
+2026-03-06 20:05:34,920 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (62%) | Objetos: 1
+2026-03-06 20:05:36,603 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (60%) | Objetos: 1
+2026-03-06 20:05:37,029 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (53%) | Objetos: 1
+2026-03-06 20:05:42,176 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (52%) | Objetos: 1
+2026-03-06 20:05:48,605 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (57%) | Objetos: 1
+2026-03-06 20:05:49,735 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (59%) | Objetos: 1
+2026-03-06 20:05:50,576 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (61%) | Objetos: 1
+2026-03-06 20:05:51,426 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (51%) | Objetos: 1
+2026-03-06 20:05:51,850 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (54%) | Objetos: 1
+2026-03-06 20:05:52,505 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (56%) | Objetos: 1
+2026-03-06 20:05:55,380 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:05:59,357 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (51%) | Objetos: 1
+2026-03-06 20:06:07,733 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (70%) | Objetos: 1
+2026-03-06 20:06:08,162 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (51%) | Objetos: 1
+2026-03-06 20:06:09,016 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (53%) | Objetos: 1
+2026-03-06 20:06:11,794 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:06:18,089 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:06:20,744 [WARNING] SVIBVA: ⚠ No se pudo conectar a 'cell onichan'. Reintentando en 5s...
+2026-03-06 20:06:20,870 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (58%) | Objetos: 1
+2026-03-06 20:06:22,137 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (74%) | Objetos: 1
+2026-03-06 20:06:22,421 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (68%) | Objetos: 1
+2026-03-06 20:06:22,699 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (80%) | Objetos: 1
+2026-03-06 20:06:23,125 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (58%) | Objetos: 1
+2026-03-06 20:06:23,548 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (69%) | Objetos: 1
+2026-03-06 20:06:23,965 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (78%) | Objetos: 1
+2026-03-06 20:06:25,228 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (51%) | Objetos: 1
+2026-03-06 20:06:25,745 [INFO] SVIBVA: Conectando a cámara 'cell onichan'...
+2026-03-06 20:06:26,691 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (62%) | Objetos: 1
+2026-03-06 20:06:28,618 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:06:31,446 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (52%) | Objetos: 1
+2026-03-06 20:06:31,850 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (63%) | Objetos: 1
+2026-03-06 20:06:32,274 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (55%) | Objetos: 1
+2026-03-06 20:06:32,738 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (66%) | Objetos: 1
+2026-03-06 20:06:33,156 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (59%) | Objetos: 1
+2026-03-06 20:06:34,391 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (61%) | Objetos: 1
+2026-03-06 20:06:34,753 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (75%) | Objetos: 1
+2026-03-06 20:06:35,616 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (72%) | Objetos: 1
+2026-03-06 20:06:36,055 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (90%) | Objetos: 1
+2026-03-06 20:06:36,488 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (93%), Persona (55%) | Objetos: 2
+2026-03-06 20:06:36,917 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (93%) | Objetos: 1
+2026-03-06 20:06:37,333 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (90%) | Objetos: 1
+2026-03-06 20:06:37,646 [INFO] SVIBVA: [DETECCIÓN] Cám: Entrada Principal | Persona (94%), Persona (58%) | Objetos: 2

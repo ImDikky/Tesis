@@ -159,7 +159,7 @@ def _frame_generator(cam_id: str):
             placeholder = _build_offline_frame(cam.name)
             _, buf = cv2.imencode(".jpg", placeholder)
             yield (b"--frame\r\nContent-Type: image/jpeg\r\n\r\n"
-                   + buf.tobytes() + b"\r\n")
+                + buf.tobytes() + b"\r\n")
             time.sleep(0.2)
             continue
 
@@ -179,7 +179,7 @@ def _frame_generator(cam_id: str):
         # ── Codificar y emitir frame ───────────────────────────────────────────
         _, buf = cv2.imencode(".jpg", annotated, [cv2.IMWRITE_JPEG_QUALITY, 80])
         yield (b"--frame\r\nContent-Type: image/jpeg\r\n\r\n"
-               + buf.tobytes() + b"\r\n")
+            + buf.tobytes() + b"\r\n")
 
 
 def _build_offline_frame(camera_name: str) -> np.ndarray:

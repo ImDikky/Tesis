@@ -31,7 +31,7 @@ class ObjectDetector:
     1. Modelo nano (yolov8n.pt): menor tamaño, mayor velocidad
     2. Frame skip: ejecuta YOLO solo cada N frames (configurable)
     3. Resize antes de inferencia: escala el frame a DETECTION_INPUT_SIZE px
-       antes de pasarlo a YOLO — el stream al navegador NO se ve afectado
+    antes de pasarlo a YOLO — el stream al navegador NO se ve afectado
     4. Torch thread cap: limita hilos de CPU para dejar recursos a otros procesos
     5. half=False: yolov8n ya es suficientemente ligero en float32 para CPU
     """
