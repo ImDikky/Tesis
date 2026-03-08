@@ -294,6 +294,49 @@ def api_alerts(limit: int = 50):
     """Retorna los últimos eventos de detección registrados en memoria."""
     return JSONResponse(get_recent_events(min(limit, 100)))
 
+@app.get("/api/settings")
+def api_get_settings():
+    """Retorna la configuración actual relevante para el dashboard."""
+    return JSONResponse({
+        "confidence_threshold": detector.conf_threshold,
+        "frame_skip": detector.frame_skip,
+        "telegram_enabled": alert_bot.enabled,
+        "alert_cooldown_seconds": alert_bot.alert_cooldown
+    })
+
+@app.post("/api/settings")
+async def api_update_settings(request: Request):
+    """Actualiza configuración en memoria y en el archivo de forma persistente."""
+    body = await request.json()
+    updates = {}
+    
+    if "confidence_threshold" in body:
+        updates["CONFIDENCE_THRESHOLD"] = float(body["confidence_threshold"])
+    if "frame_skip" in body:
+        updates["FRAME_SKIP"] = int(body["frame_skip"])
+    if "telegram_enabled" in body:
+        updates["TELEGRAM_ENABLED"] = bool(body["telegram_enabled"])
+    if "alert_cooldown_seconds" in body:
+        updates["ALERT_COOLDOWN_SECONDS"] = int(body["alert_cooldown_seconds"])
+        
+    if updates:
+        import config
+        success = config.update_config_file(updates)
+        
+        # Actualizar instancias en memoria
+        conf_thr = updates.get("CONFIDENCE_THRESHOLD")
+        f_skip = updates.get("FRAME_SKIP")
+        detector.update_settings(conf_threshold=conf_thr, frame_skip=f_skip)
+        
+        tel_en = updates.get("TELEGRAM_ENABLED")
+        alert_cd = updates.get("ALERT_COOLDOWN_SECONDS")
+        alert_bot.update_settings(telegram_enabled=tel_en, alert_cooldown=alert_cd)
+        
+        action = "actualizados y guardados" if success else "actualizados solo en memoria (error al guardar)"
+        log_system(f"⚙ Parámetros de configuración {action}.")
+        return JSONResponse({"status": "success", "saved": success})
+    
+    return JSONResponse({"status": "no_changes"})
 
 @app.get("/api/stats")
 def api_stats():

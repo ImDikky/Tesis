@@ -49,8 +49,15 @@ class ObjectDetector:
         self.target_classes    = DETECTION_CLASSES
         self.target_class_ids  = list(self.target_classes.keys())
         self.det_input_size    = DETECTION_INPUT_SIZE
+        self.frame_skip        = FRAME_SKIP
         self._frame_counters: dict[str, int] = {}
 
+    def update_settings(self, conf_threshold=None, frame_skip=None):
+        if conf_threshold is not None:
+            self.conf_threshold = conf_threshold
+        if frame_skip is not None:
+            self.frame_skip = frame_skip
+            
     # ─────────────────────────────────────────────────────────────────────────
     def process_frame(self, frame: np.ndarray, camera_id: str) -> tuple[np.ndarray, list]:
         """
@@ -71,7 +78,7 @@ class ObjectDetector:
         self._frame_counters[camera_id] += 1
 
         # ── Frame skip ────────────────────────────────────────────────────────
-        if self._frame_counters[camera_id] % (FRAME_SKIP + 1) != 0:
+        if self._frame_counters[camera_id] % (self.frame_skip + 1) != 0:
             return frame, []
 
         # ── Escalar frame para inferencia YOLO (más rápido) ───────────────────

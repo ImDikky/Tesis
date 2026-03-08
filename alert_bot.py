@@ -42,6 +42,7 @@ class AlertBot:
 
     def __init__(self):
         self.enabled = TELEGRAM_ENABLED and _telegram_available
+        self.alert_cooldown = ALERT_COOLDOWN_SECONDS
         self._last_alert: dict[str, float] = {}  # camera_id -> timestamp último envío
 
         if self.enabled:
@@ -58,6 +59,12 @@ class AlertBot:
         if not TELEGRAM_ENABLED:
             return "disabled"
         return "online" if self.enabled else "error"
+
+    def update_settings(self, telegram_enabled=None, alert_cooldown=None):
+        if telegram_enabled is not None:
+            self.enabled = telegram_enabled and _telegram_available
+        if alert_cooldown is not None:
+            self.alert_cooldown = alert_cooldown
 
     def should_alert(self, camera_id: str, detections: list) -> bool:
         """
@@ -81,7 +88,7 @@ class AlertBot:
 
         # ¿Ha pasado el tiempo de cooldown?
         last = self._last_alert.get(camera_id, 0)
-        return (time.time() - last) >= ALERT_COOLDOWN_SECONDS
+        return (time.time() - last) >= self.alert_cooldown
 
     def send_alert(self, camera_id: str, camera_name: str, frame: np.ndarray, detections: list):
         """

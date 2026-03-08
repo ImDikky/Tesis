@@ -6,6 +6,10 @@
 # NO compartas este archivo si contiene tokens de Telegram reales.
 
 # ------------------------------------------------------------------------------
+import os
+import re
+
+# ------------------------------------------------------------------------------
 # CÁMARAS PREDETERMINADAS
 # Cada cámara es un dict con: id, name, source, enabled
 #   source: entero (índice webcam USB) o string (URL RTSP/HTTP)
@@ -18,19 +22,18 @@ DEFAULT_CAMERAS = [
         "id": "cam_0",
         "name": "Entrada Principal",
         "source": 0,
-        "enabled": True,
+        "enabled": False,
     },
-    # Descomenta y edita para agregar más cámaras:
-    # {
-    #     "id": "cam_1",
-    #     "name": "Patio Trasero",
-    #     "source": "rtsp://admin:password@192.168.1.10:554/stream1",
-    #     "enabled": True,
-    # },
+    {
+         "id": "cam_1",
+         "name": "Patio Trasero",
+         "source": "http://192.168.1.8:8080/video",
+         "enabled": True,
+    },
     {
         "id": "cam_2",
-        "name": "cell onichan",
-        "source": "http://192.168.9.102:8080/video",
+        "name": "cell johan",
+        "source": "http://192.168.1.6:8080/video",
         "enabled": True,
     },
 ]
@@ -76,7 +79,7 @@ DETECTION_INPUT_SIZE = 480
 # FPS máximos que el generador MJPEG intentará enviar al navegador.
 # Reducir esto alivia carga de codificación JPEG y ancho de banda WiFi.
 # Recomendado: 10-15 fps para videovigilancia residencial
-MJPEG_TARGET_FPS = 12
+MJPEG_TARGET_FPS = 10
 
 # Máximo de hilos de CPU que PyTorch puede usar para inferencia.
 # None = automático (puede usar todos los cores y saturar la PC)
@@ -97,9 +100,9 @@ CAPTURE_RESOLUTION = (640, 480)
 #      (usa: https://api.telegram.org/bot<TOKEN>/getUpdates)
 #   3. Establece TELEGRAM_ENABLED = True
 
-TELEGRAM_ENABLED = False
-TELEGRAM_TOKEN   = "TU_TOKEN_AQUI"     # Ej: "7123456789:AAE..."
-TELEGRAM_CHAT_ID = "TU_CHAT_ID_AQUI"  # Ej: "123456789"
+TELEGRAM_ENABLED = True
+TELEGRAM_TOKEN   = "7854925674:AAGFMUn9lNitXZhL4CznrVYnTNK-Tgfu2sY"     # Ej: "7123456789:AAE..."
+TELEGRAM_CHAT_ID = "5521213370"  # Ej: "123456789"
 
 # Segundos mínimos entre alertas por cámara (evita spam)
 ALERT_COOLDOWN_SECONDS = 30
@@ -119,3 +122,30 @@ SERVER_PORT = 5050
 LOG_DIR           = "logs"
 LOG_FILE          = "logs/events.log"
 MAX_EVENTS_MEMORY = 100  # Eventos en memoria para el endpoint /api/alerts
+
+def update_config_file(updates: dict) -> bool:
+    """Actualiza el archivo config.py y aplica los cambios para la persistencia."""
+    config_path = os.path.abspath(__file__)
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        if "CONFIDENCE_THRESHOLD" in updates:
+            val = float(updates["CONFIDENCE_THRESHOLD"])
+            content = re.sub(r"^CONFIDENCE_THRESHOLD\s*=\s*[\d\.]+", f"CONFIDENCE_THRESHOLD = {val}", content, flags=re.MULTILINE)
+        if "FRAME_SKIP" in updates:
+            val = int(updates["FRAME_SKIP"])
+            content = re.sub(r"^FRAME_SKIP\s*=\s*\d+", f"FRAME_SKIP = {val}", content, flags=re.MULTILINE)
+        if "TELEGRAM_ENABLED" in updates:
+            val = "True" if updates["TELEGRAM_ENABLED"] else "False"
+            content = re.sub(r"^TELEGRAM_ENABLED\s*=\s*(True|False)", f"TELEGRAM_ENABLED = {val}", content, flags=re.MULTILINE)
+        if "ALERT_COOLDOWN_SECONDS" in updates:
+            val = int(updates["ALERT_COOLDOWN_SECONDS"])
+            content = re.sub(r"^ALERT_COOLDOWN_SECONDS\s*=\s*\d+", f"ALERT_COOLDOWN_SECONDS = {val}", content, flags=re.MULTILINE)
+            
+        with open(config_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return True
+    except Exception as e:
+        print(f"Error saving config: {e}")
+        return False

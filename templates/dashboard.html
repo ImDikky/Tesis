@@ -1,223 +1,444 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVIBVA — Panel de Videovigilancia</title>
-    <meta name="description" content="Sistema de Videovigilancia Inteligente Basado en Visión Artificial — IUTA Caracas">
-
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Roboto & Outfit (Premium sans-serif combo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
 </head>
 
 <body>
 
-<!-- ============================================================
-     SIDEBAR IZQUIERDO — Cámaras, Filtros, Estado del Bot, LAN
-     ============================================================ -->
-<aside class="sidebar" id="sidebar">
-
-    <!-- Marca / Logo -->
-    <div class="brand">
-        <div class="brand-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 10l4.553-2.069A1 1 0 0121 8.87V15.13a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
-            </svg>
-        </div>
-        <div class="brand-text">
-            <span class="brand-name">SVIBVA</span>
-            <span class="brand-version">v1.0 — Edge AI</span>
-        </div>
-        <button class="sidebar-toggle" id="sidebarToggle" title="Colapsar panel">‹</button>
-    </div>
-
-    <!-- Recursos del sistema -->
-    <div class="resource-bar-section">
-        <div class="resource-row">
-            <span class="resource-label">CPU</span>
-            <div class="resource-track">
-                <div class="resource-fill cpu-fill" id="cpuBar" style="width:0%"></div>
+    <!-- ============================================================
+         HEADER PREMIUM
+         ============================================================ -->
+    <header class="app-header">
+        <div class="header-brand">
+            <div class="brand-shield">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
             </div>
-            <span class="resource-value" id="cpuVal">–%</span>
-        </div>
-        <div class="resource-row">
-            <span class="resource-label">RAM</span>
-            <div class="resource-track">
-                <div class="resource-fill ram-fill" id="ramBar" style="width:0%"></div>
-            </div>
-            <span class="resource-value" id="ramVal">–%</span>
-        </div>
-    </div>
-
-    <!-- Cámaras conectadas -->
-    <div class="section-header">
-        <span class="section-title">Cámaras</span>
-        <button class="btn-icon" id="btnAddCamera" title="Agregar cámara">+</button>
-    </div>
-    <ul class="camera-list" id="cameraList">
-        <!-- Poblado dinámicamente por JS -->
-    </ul>
-
-    <!-- Filtros de detección -->
-    <div class="section-header">
-        <span class="section-title">Filtros YOLO</span>
-    </div>
-    <div class="filter-chips" id="filterChips">
-        <label class="chip active" data-class="0">
-            <input type="checkbox" checked> 👤 Persona
-        </label>
-        <label class="chip active" data-class="2">
-            <input type="checkbox" checked> 🚗 Auto
-        </label>
-        <label class="chip" data-class="3">
-            <input type="checkbox"> 🏍 Moto
-        </label>
-        <label class="chip" data-class="15">
-            <input type="checkbox"> 🐱 Gato
-        </label>
-        <label class="chip" data-class="16">
-            <input type="checkbox"> 🐶 Perro
-        </label>
-    </div>
-
-    <!-- Estado del bot de Telegram -->
-    <div class="section-header">
-        <span class="section-title">Alertas Telegram</span>
-    </div>
-    <div class="telegram-status" id="telegramStatus">
-        <div class="status-indicator" id="telegramDot"></div>
-        <span id="telegramText">Verificando...</span>
-    </div>
-
-    <!-- Acceso LAN -->
-    <div class="section-header">
-        <span class="section-title">Acceso Red Local</span>
-    </div>
-    <div class="lan-info">
-        <div class="lan-url" id="lanUrl">–</div>
-        <div class="lan-hint">Accede desde cualquier dispositivo en tu red WiFi sin internet</div>
-    </div>
-
-    <!-- Tema -->
-    <div class="sidebar-footer">
-        <button class="btn-theme" id="themeToggle">
-            <span id="themeIcon">☀</span>
-            <span id="themeLabel">Modo Claro</span>
-        </button>
-    </div>
-
-</aside>
-
-
-<!-- ============================================================
-     ÁREA PRINCIPAL — Grid de cámaras + topbar
-     ============================================================ -->
-<main class="main-content">
-
-    <!-- Topbar -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <h1 class="topbar-title">Monitoreo en Vivo</h1>
-            <div class="topbar-badge" id="onlineBadge">
-                <span class="pulse-dot"></span>
-                <span id="onlineCount">0</span> en línea
+            <div class="brand-text">
+                <h1>SVIBVA</h1>
+                <p>Sistema de Videovigilancia Inteligente • Visión Artificial</p>
             </div>
         </div>
-        <div class="topbar-right">
-            <!-- Selector de layout -->
-            <div class="layout-selector">
-                <button class="layout-btn active" data-cols="1" title="1 cámara">▣</button>
-                <button class="layout-btn" data-cols="2" title="2x2">⊞</button>
-                <button class="layout-btn" data-cols="4" title="4 cámaras">⊟</button>
+
+        <div class="header-pills">
+            <div class="status-pill active">
+                <span class="dot"></span> Red Local Activa
             </div>
+            <div class="status-pill edge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Edge Computing
+            </div>
+            <div class="status-pill offline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                    <path d="M12 20h.01"></path>
+                    <line x1="2" y1="2" x2="22" y2="22"></line>
+                </svg>
+                Sin Internet
+            </div>
+            <button class="icon-btn" id="themeToggle" title="Alternar tema">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    id="themeIconSvg">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            <button class="icon-btn" id="btnSettings" title="Configuración">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+            </button>
         </div>
     </header>
 
-    <!-- Grid de feeds de video -->
-    <div class="camera-grid" id="cameraGrid">
-        <!-- Poblado dinámicamente por JS al cargar -->
-        <div class="no-cameras-placeholder" id="noCamerasMsg">
-            <div class="placeholder-icon">📷</div>
-            <p>No hay cámaras configuradas.</p>
-            <p>Agrega una cámara con el botón <strong>+</strong> en el panel lateral.</p>
-        </div>
-    </div>
+    <!-- ============================================================
+         GRID PRINCIPAL
+         ============================================================ -->
+    <main class="dashboard-grid">
 
-</main>
-
-
-<!-- ============================================================
-     PANEL DERECHO — Log de alertas en tiempo real
-     ============================================================ -->
-<aside class="alerts-panel" id="alertsPanel">
-
-    <div class="alerts-header">
-        <h3 class="alerts-title">Alertas en Vivo</h3>
-        <div class="alerts-controls">
-            <span class="alert-count-badge" id="alertCount">0</span>
-            <button class="btn-icon-sm" id="btnClearAlerts" title="Limpiar alertas">🗑</button>
-            <button class="btn-icon-sm" id="btnToggleAlerts" title="Colapsar">›</button>
-        </div>
-    </div>
-
-    <div class="ws-status" id="wsStatus">
-        <span class="ws-dot disconnected"></span>
-        <span id="wsStatusText">Conectando...</span>
-    </div>
-
-    <div class="alerts-list" id="alertsList">
-        <div class="alert-empty">Sin alertas recientes</div>
-    </div>
-
-</aside>
-
-<!-- ============================================================
-     BOTONES FLOTANTES PARA REABRIR PANELES
-     ============================================================ -->
-<button class="reopen-btn reopen-left" id="btnReopenSidebar" title="Expandir menú" style="display: none;">
-    ›
-</button>
-<button class="reopen-btn reopen-right" id="btnReopenAlerts" title="Expandir alertas" style="display: none;">
-    ‹
-</button>
-
-
-<!-- ============================================================
-     MODAL — Agregar cámara
-     ============================================================ -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-        <div class="modal-header">
-            <h3>Agregar Cámara</h3>
-            <button class="modal-close" id="modalClose">✕</button>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label>Nombre de la cámara</label>
-                <input type="text" id="camName" placeholder="Ej: Entrada Principal" class="form-input">
+        <!-- TOP STATS ROW -->
+        <div class="stat-card">
+            <div class="stat-icon red-glow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
             </div>
-            <div class="form-group">
-                <label>Fuente de video</label>
-                <input type="text" id="camSource" placeholder="0 (USB), rtsp://... o http://..." class="form-input">
-                <span class="form-hint">
-                    USB: escribe <code>0</code> (primera cámara) o <code>1</code>, <code>2</code>…<br>
-                    RTSP: <code>rtsp://usuario:clave@192.168.1.10:554/stream</code><br>
-                    IP Webcam/DroidCam: <code>http://192.168.1.x:8080/video</code>
-                </span>
+            <div class="stat-info">
+                <div class="stat-value" id="statPersons">0</div>
+                <div class="stat-label">Personas hoy <span class="trend up">↗ +0%</span></div>
             </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn-secondary" id="btnModalCancel">Cancelar</button>
-            <button class="btn-primary" id="btnModalAdd">Agregar</button>
+
+        <div class="stat-card">
+            <div class="stat-icon orange-glow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+            </div>
+            <div class="stat-info">
+                <div class="stat-value" id="statVehicles">0</div>
+                <div class="stat-label">Vehículos hoy <span class="trend up">↗ +0%</span></div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon green-glow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6z">
+                    </path>
+                    <path d="m22 10-2.5-2"></path>
+                    <path d="m2 10 2.5-2"></path>
+                </svg>
+            </div>
+            <div class="stat-info">
+                <div class="stat-value" id="statPets">0</div>
+                <div class="stat-label">Mascotas hoy <span class="trend down">↘ -0%</span></div>
+            </div>
+        </div>
+
+        <!-- CAMERA FEED & RECENT DETECTIONS -->
+        <div class="panel main-camera-panel">
+            <div class="panel-header">
+                <div class="cam-title">
+                    <span class="dot active"></span>
+                    <span id="activeCamName">CAM-01 • Selecciona una cámara</span> <span class="badge">IP</span>
+                </div>
+                <div class="cam-wifi">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="2">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                        <path d="M12 20h.01"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="camera-stage" id="mainCameraStage">
+                <!-- Se inyectará feed aquí -->
+                <div class="camera-grid grid-compact" id="cameraGrid" style="display: grid; width: 100%; height: 100%;">
+                    <div class="no-cameras-placeholder" id="noCamerasMsg">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2a3644" stroke-width="1.5">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                            </path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                        <p>No hay feeds activos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="clock" id="systemClock">00:00:00</div>
+                <div class="alert-ticker"><span class="warn-icon">⚠</span> <span id="tickerText">0 detecciones
+                        recientes</span></div>
+            </div>
+        </div>
+
+        <!-- MULTI-CAMERA GRID (Added) -->
+        <div class="panel multi-camera-panel" style="grid-column: span 8;">
+            <div class="panel-header">
+                <h3>Vista General de Cámaras</h3>
+                <div class="layout-controls">
+                    <button class="icon-btn sm layout-btn active" data-cols="2" title="Grid 2x2"><svg width="14"
+                            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg></button>
+                    <button class="icon-btn sm layout-btn" data-cols="3" title="Grid 3x3"><svg width="14" height="14"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="5" height="5"></rect>
+                            <rect x="9.5" y="3" width="5" height="5"></rect>
+                            <rect x="16" y="3" width="5" height="5"></rect>
+                            <rect x="3" y="9.5" width="5" height="5"></rect>
+                            <rect x="9.5" y="9.5" width="5" height="5"></rect>
+                            <rect x="16" y="9.5" width="5" height="5"></rect>
+                            <rect x="3" y="16" width="5" height="5"></rect>
+                            <rect x="9.5" y="16" width="5" height="5"></rect>
+                            <rect x="16" y="16" width="5" height="5"></rect>
+                        </svg></button>
+                </div>
+            </div>
+            <!-- Secondary grid container (managed by JS via cloneNode) -->
+            <div class="multi-camera-grid cols-2" id="multiCameraGrid">
+                <!-- Javascript will inject camera feeds here -->
+            </div>
+        </div>
+
+        <div class="panel side-list-panel">
+            <div class="panel-header">
+                <h3>Detecciones Recientes</h3>
+                <span class="badge blue">YOLO v8</span>
+            </div>
+            <div class="list-container" id="recentDetectionsList">
+                <!-- Poblado por JS -->
+                <div class="empty-state">Sin detecciones recientes</div>
+            </div>
+        </div>
+
+        <!-- RECURSOS DEL SISTEMA Y CÁMARAS -->
+        <div class="row-panels">
+            <!-- Monitor -->
+            <div class="panel gauge-panel">
+                <div class="panel-header">
+                    <h3>Monitor del Sistema</h3>
+                </div>
+                <div class="panel-subtitle">Core i5 4ta Gen • Edge Computing</div>
+
+                <div class="resource-block">
+                    <div class="res-head">
+                        <span class="res-lbl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg> CPU</span>
+                        <span class="res-val" id="cpuVal">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill teal" id="cpuBar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="resource-block">
+                    <div class="res-head">
+                        <span class="res-lbl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg> RAM</span>
+                        <span class="res-val" id="ramVal">0GB</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill cyan" id="ramBar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="resource-block">
+                    <div class="res-head">
+                        <span class="res-lbl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg> FPS Promedio</span>
+                        <span class="res-val" id="fpsVal">0fps</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill orange" id="fpsBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Cámaras -->
+            <div class="panel cam-list-panel">
+                <div class="panel-header">
+                    <h3>Cámaras Conectadas</h3>
+                    <div class="cam-count" id="activeCamCountText">0/0 activas</div>
+                    <button class="icon-btn sm" id="btnAddCamera" title="Añadir Cámara"><svg width="16" height="16"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg></button>
+                </div>
+                <div class="connected-cams-list" id="cameraList">
+                    <!-- Poblado por JS -->
+                </div>
+            </div>
+
+            <!-- Registro Alertas -->
+            <div class="panel registry-panel">
+                <div class="panel-header">
+                    <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg> Registro de Alertas</h3>
+                    <div class="bot-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                        </svg> Telegram Bot</div>
+                </div>
+                <div class="registry-timeline" id="alertsList">
+                    <!-- Poblado por JS -->
+                    <div class="alert-empty"
+                        style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">Sin
+                        registros</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS SECTION -->
+        <div class="charts-row">
+            <div class="panel chart-panel">
+                <div class="panel-header">
+                    <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3d5c" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg> Detecciones por Hora</h3>
+                    <span class="sm-label">Hoy</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChartHourly"></canvas>
+                </div>
+            </div>
+
+            <div class="panel chart-panel">
+                <div class="panel-header">
+                    <h3>Distribución por Tipo</h3>
+                </div>
+                <div class="chart-container donut-wrap">
+                    <canvas id="donutChartTypes" height="180"></canvas>
+                </div>
+                <div class="donut-legend">
+                    <span><i class="dot red"></i> Personas</span>
+                    <span><i class="dot orange"></i> Vehículos</span>
+                    <span><i class="dot green"></i> Mascotas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel chart-panel full-width">
+            <div class="panel-header">
+                <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg> Tendencia Semanal</h3>
+                <span class="sm-label">Última semana</span>
+            </div>
+            <div class="chart-container" style="height: 200px;">
+                <canvas id="lineChartWeekly"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+        <div class="company-footer">SVIBVA v1.0 • IUTA Caracas • Sistemas y Redes de Seguridad</div>
+        <div class="tech-stack">YOLOv8 • OpenCV • Python • Edge Computing</div>
+    </footer>
+
+
+    <!-- ============================================================
+         MODALS 
+         ============================================================ -->
+    <!-- Modal Add Camera -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Añadir Nueva Cámara</h3>
+                <button class="modal-close" id="modalClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nombre Identificador</label>
+                    <input type="text" id="camName" placeholder="Ej: Entrada Principal" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Fuente de Video (RTSP/IP/USB)</label>
+                    <input type="text" id="camSource" placeholder="0 o rtsp://..." class="form-input">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn ghost" id="btnModalCancel">Cancelar</button>
+                <button class="btn primary" id="btnModalAdd">Añadir Fuente</button>
+            </div>
         </div>
     </div>
-</div>
 
+    <!-- Modal Settings -->
+    <div class="modal-overlay" id="settingsModalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Parámetros del Sistema</h3>
+                <button class="modal-close" id="settingsModalClose"><svg width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Umbral de Confianza YOLO</label>
+                    <div style="display:flex; gap: 10px; align-items:center;">
+                        <input type="range" id="confThreshold" min="10" max="95" step="5" style="flex:1;">
+                        <span id="confValue" style="min-width:40px; text-align:right;">50%</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Salto de Fotogramas (Frame Skip)</label>
+                    <select id="frameSkip" class="form-input">
+                        <option value="0">0 (Máximo CPU)</option>
+                        <option value="2">2 (Hardware alto)</option>
+                        <option value="4">4 (Hardware medio)</option>
+                        <option value="9">9 (Hardware bajo)</option>
+                    </select>
+                </div>
+                <div class="form-group slim">
+                    <label
+                        style="display:flex; align-items:center; justify-content:space-between; width:100%; cursor:pointer;">
+                        Activar Bot de Telegram
+                        <input type="checkbox" id="telegramEnabled" class="toggle-checkbox">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Demora entre Alertas (segundos)</label>
+                    <input type="number" id="alertCooldown" class="form-input" min="5" max="300">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn ghost" id="btnSettingsCancel">Cancelar</button>
+                <button class="btn primary" id="btnSettingsSave">Guardar y Aplicar</button>
+            </div>
+        </div>
+    </div>
 
-<script src="{{ url_for('static', path='js/main.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', path='js/chart.umd.js') }}"></script>
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>
 </body>
+
 </html>
